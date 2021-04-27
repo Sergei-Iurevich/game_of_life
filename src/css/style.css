@@ -1,0 +1,32 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+.app__row1 {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.app__row2 {
+  width: 50%;
+  margin: 40px auto;
+}
+
+.app__row3 {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 2px solid green;
+}
+
+td {
+  padding: 20px;
+  border: 1px solid black;
+}

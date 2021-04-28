@@ -1,5 +1,5 @@
 ![](https://github.com/Sergei-Iurevich/game_of_life/actions/workflows/sanity-check.yml/badge.svg)
-[![codecov](https://codecov.io/gh/Sergei-Iurevich/game_of_life/branch/dev/graph/badge.svg?token=KCZZBDZQD2)](https://codecov.io/gh/Sergei-Iurevich/weather)
+[![codecov](https://codecov.io/gh/Sergei-Iurevich/game_of_life/branch/dev/graph/badge.svg?token=KCZZBDZQD2)](https://codecov.io/gh/Sergei-Iurevich/game_of_life)
 # App "Game of life"
 
 Цель: В задании тренируются навыки:

@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "webpack",
+    "serve": "webpack serve",
     "tsc": "tsc",
     "lint": "prettier --check . && eslint . --ext .js,.ts && tsc --noEmit",
     "lint:fix": "prettier --write . && eslint . --fix --ext .js,.ts"

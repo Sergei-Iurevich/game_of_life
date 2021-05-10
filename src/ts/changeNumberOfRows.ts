@@ -6,9 +6,11 @@ export function changeNumberOfRows(
   const numberOfRows = table.rows.length;
   const numberOfColumns = table.rows[0].cells.length;
   if (inputValue > table.rows.length) {
-    const newRow = table.insertRow();
-    for (let j = 0; j < numberOfColumns; j++) {
-      newRow.insertCell(j);
+    for (let i = numberOfRows; i < inputValue; i++) {
+      const newRow = table.insertRow();
+      for (let j = 0; j < numberOfColumns; j++) {
+        newRow.insertCell(j);
+      }
     }
   } else {
     table.deleteRow(numberOfRows - 1);

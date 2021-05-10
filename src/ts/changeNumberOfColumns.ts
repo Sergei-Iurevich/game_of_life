@@ -8,7 +8,9 @@ export function changeNumberOfColumns(
   if (inputValue > numberOfColumns) {
     for (let i = 0; i < numberOfRows; i++) {
       const row = table.rows[i];
-      row.insertCell();
+      for (let j = numberOfColumns; j < inputValue; j++) {
+        row.insertCell();
+      }
     }
   } else {
     for (let i = 0; i < numberOfRows; i++) {

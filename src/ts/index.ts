@@ -4,8 +4,12 @@ import { changeNumberOfColumns } from "./changeNumberOfColumns";
 import { startGame } from "./startGame";
 
 const app = document.querySelector(".app") as HTMLDivElement;
-const inputForRows = app.querySelector(".app__input") as HTMLInputElement;
-const inputForColumns = app.querySelector(".app__input2") as HTMLInputElement;
+const inputForRows = app.querySelector(
+  ".app__input-vertical"
+) as HTMLInputElement;
+const inputForColumns = app.querySelector(
+  ".app__input-horizontal"
+) as HTMLInputElement;
 const buttonStartGame = app.querySelector(".app__button2") as HTMLButtonElement;
 const table = app.querySelector("table") as HTMLTableElement;
 const inputRange = app.querySelector("#range") as HTMLInputElement;
@@ -16,11 +20,19 @@ const pause = {
 };
 
 inputForRows.addEventListener("change", () => {
-  changeNumberOfRows(table, inputForRows);
+  if (Number(inputForRows.value) > 3) {
+    changeNumberOfRows(table, inputForRows);
+  } else {
+    inputForRows.value = "3";
+  }
 });
 
 inputForColumns.addEventListener("change", () => {
-  changeNumberOfColumns(table, inputForColumns);
+  if (Number(inputForColumns.value) > 3) {
+    changeNumberOfColumns(table, inputForColumns);
+  } else {
+    inputForColumns.value = "3";
+  }
 });
 
 buttonStartGame.addEventListener("click", () => {

@@ -13,6 +13,9 @@ export function changeNumberOfRows(
       }
     }
   } else {
-    table.deleteRow(numberOfRows - 1);
+    const indexLastRow = numberOfRows - 1;
+    for (let i = indexLastRow; i >= inputValue; i--) {
+      table.deleteRow(i);
+    }
   }
 }

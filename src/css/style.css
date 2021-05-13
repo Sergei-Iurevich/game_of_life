@@ -4,19 +4,18 @@
   box-sizing: border-box;
 }
 
-.app__row1 {
+.controls {
+  padding: 10px 0 0 10px;
+}
+
+.input-range {
   padding-top: 10px;
   padding-left: 10px;
 }
 
-.app__row2 {
+.table-container {
   width: 50%;
   margin: 40px auto;
-}
-
-.app__row3 {
-  padding-top: 10px;
-  padding-left: 10px;
 }
 
 table {

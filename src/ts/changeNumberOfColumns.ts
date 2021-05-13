@@ -15,7 +15,10 @@ export function changeNumberOfColumns(
   } else {
     for (let i = 0; i < numberOfRows; i++) {
       const row = table.rows[i];
-      row.deleteCell(numberOfColumns - 1);
+      const indexLastColumn = numberOfColumns - 1;
+      for (let j = indexLastColumn; j >= inputValue; j--) {
+        row.deleteCell(j);
+      }
     }
   }
 }

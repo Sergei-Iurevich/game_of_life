@@ -2,12 +2,12 @@ import { sumNeighbors } from "./sumNeighbors";
 import { arrayOfIndexNeighbors } from "./arrayOfIndexNeighbors";
 
 export function matrixRemake(matrix: number[][]): number[][] {
-  const n = matrix.length;
-  const m = matrix[0].length;
+  const numberOfRows = matrix.length;
+  const numberOfColumns = matrix[0].length;
   const matrixRes = [];
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < numberOfRows; i++) {
     const matrixJ = [];
-    for (let j = 0; j < m; j++) {
+    for (let j = 0; j < numberOfColumns; j++) {
       const sum = sumNeighbors(matrix, arrayOfIndexNeighbors(i, j));
       if (sum === 2) {
         matrixJ.push(matrix[i][j]);

@@ -4,11 +4,9 @@ export function drawTable(
   color: string
 ): void {
   const { rows } = table;
-  const n = array.length;
-  const m = array[0].length;
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < array.length; i++) {
     const { cells } = rows[i];
-    for (let j = 0; j < m; j++) {
+    for (let j = 0; j < array[0].length; j++) {
       if (array[i][j] === 1) {
         cells[j].style.backgroundColor = color;
       } else if (color !== "blue") {

@@ -5,7 +5,12 @@ describe("testing function sumItemsOfMatrix", () => {
     expect(typeof sumNeighbors).toBe("function");
   });
   it("returns sum of items of array", () => {
-    const array = [
+    const matrix = [
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+    ];
+    const matrixOfIndex = [
       [-1, -1],
       [-1, 0],
       [-1, 1],
@@ -15,11 +20,6 @@ describe("testing function sumItemsOfMatrix", () => {
       [1, 0],
       [1, 1],
     ];
-    const z = [
-      [1, 1, 1],
-      [1, 1, 1],
-      [1, 1, 1],
-    ];
-    expect(sumNeighbors(z, array)).toBe(3);
+    expect(sumNeighbors(matrix, matrixOfIndex)).toBe(3);
   });
 });

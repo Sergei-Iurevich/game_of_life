@@ -1,20 +1,20 @@
 export function createMatrix(table: HTMLTableElement): number[][] {
   const { rows } = table;
-  const z = [];
+  const matrix = [];
   for (let i = 0; i < rows.length; i++) {
     const { cells } = rows[i];
-    const p = [];
+    const rowOfMatrix = [];
     for (let j = 0; j < cells.length; j++) {
       if (
         cells[j].style.backgroundColor === "grey" ||
         cells[j].style.backgroundColor === "blue"
       ) {
-        p.push(1);
+        rowOfMatrix.push(1);
       } else {
-        p.push(0);
+        rowOfMatrix.push(0);
       }
     }
-    z.push(p);
+    matrix.push(rowOfMatrix);
   }
-  return z;
+  return matrix;
 }

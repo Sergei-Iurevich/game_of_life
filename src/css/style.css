@@ -1,0 +1,31 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+.controls {
+  padding: 10px 0 0 10px;
+}
+
+.input-range {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.table-container {
+  width: 50%;
+  margin: 40px auto;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 2px solid green;
+}
+
+td {
+  padding: 20px;
+  border: 1px solid black;
+}

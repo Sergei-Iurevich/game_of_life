@@ -1,8 +1,12 @@
-describe("test initListenerForInputs", () => {
+describe("test initListeners", () => {
   let inputForRow: HTMLInputElement;
   let inputForColumns: HTMLInputElement;
+  let buttonStartGame: HTMLButtonElement;
   let table: HTMLTableElement;
-  beforeAll(() => {
+  beforeEach(() => {
+    jest.resetModules();
+    window.alert = jest.fn();
+    jest.useFakeTimers();
     document.body.innerHTML = `<div class="app">
                             <div>
                                 <input
@@ -19,9 +23,33 @@ describe("test initListenerForInputs", () => {
                                   max="20"
                                   value="3"
                                 />
-                                <button value="start1">
+                                <button class="controls__button">
                                     start
                                 </button>
+                            </div>
+                            <div class="input-range">
+                                <input
+                                  id="range"
+                                  type="range"
+                                  list="tickmarks"
+                                  name="volume"
+                                  min="1"
+                                  max="10"
+                                  value="3"
+                                />
+                                <datalist id="tickmarks">
+                                  <option value="1"></option>
+                                  <option value="2"></option>
+                                  <option value="3"></option>
+                                  <option value="4"></option>
+                                  <option value="5"></option>
+                                  <option value="6"></option>
+                                  <option value="7"></option>
+                                  <option value="8"></option>
+                                  <option value="9"></option>
+                                  <option value="10"></option>
+                                </datalist>
+                                <label id="label" for="range"></label>
                             </div>
                             <table>
                                       <tr>
@@ -47,13 +75,12 @@ describe("test initListenerForInputs", () => {
     inputForColumns = document.querySelector(
       ".controls__input-horizontal"
     ) as HTMLInputElement;
+    buttonStartGame = document.querySelector(
+      ".controls__button"
+    ) as HTMLButtonElement;
     table = document.querySelector("table") as HTMLTableElement;
     // eslint-disable-next-line global-require
-    require("./initListenerForInputs");
-  });
-  afterEach(() => {
-    inputForRow.value = "3";
-    inputForColumns.value = "3";
+    require("./initListeners");
   });
   it("test for rows of table, with an increase of 1", () => {
     inputForRow.stepUp();
@@ -85,5 +112,35 @@ describe("test initListenerForInputs", () => {
     inputForColumns.value = "5";
     inputForColumns.dispatchEvent(new Event("change"));
     expect(table.rows[0].cells.length).toBe(5);
+  });
+  it("testing the addEventListener for buttonStartGame", () => {
+    const event = new Event("click");
+    buttonStartGame.dispatchEvent(event);
+    expect(buttonStartGame.innerText).toBe("stop");
+  });
+  it("a periodic configuration will be formed", () => {
+    const event = new Event("click", { bubbles: true });
+    table.rows[0].cells[0].dispatchEvent(event);
+    table.rows[0].cells[1].dispatchEvent(event);
+    table.rows[1].cells[0].dispatchEvent(event);
+    table.rows[1].cells[1].dispatchEvent(event);
+    buttonStartGame.dispatchEvent(event);
+    jest.runAllTimers();
+    expect(buttonStartGame.innerText).toBe("stop");
+    expect(setTimeout).toHaveBeenCalledTimes(2);
+    expect(window.alert).toBeCalledWith("A periodic configuration is formed");
+  });
+  it("all cells will be dead", () => {
+    const event = new Event("click", { bubbles: true });
+    table.rows[0].cells[0].dispatchEvent(event);
+    table.rows[0].cells[1].dispatchEvent(event);
+    table.rows[0].cells[2].dispatchEvent(event);
+    table.rows[1].cells[0].dispatchEvent(event);
+    table.rows[1].cells[1].dispatchEvent(event);
+    buttonStartGame.dispatchEvent(event);
+    jest.runAllTimers();
+    expect(buttonStartGame.innerText).toBe("stop");
+    expect(setTimeout).toHaveBeenCalledTimes(3);
+    expect(window.alert).toBeCalledWith("All cells are dead");
   });
 });

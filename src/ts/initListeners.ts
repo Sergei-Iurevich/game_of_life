@@ -43,14 +43,11 @@ inputForColumns.addEventListener("change", () => {
 });
 
 buttonStartGame.addEventListener("click", () => {
-  // alert("ok");
   if (buttonStartGame.innerText !== "stop") {
     buttonStartGame.innerText = "stop";
     pause.status = false;
     const delayStart = 1000 / Number(inputRange.value);
-    // alert("ok");
     setTimeout(() => {
-      // alert("ok");
       startGame(pause, table, inputRange, arrayMatrix);
     }, delayStart);
   } else {
